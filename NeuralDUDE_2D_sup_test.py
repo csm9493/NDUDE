@@ -7,7 +7,7 @@ delta_arr = [0.05, 0.1, 0.2, 0.25]
 
 ep_ = 15
 
-# Available est dataset : 1) Set13_256, 2) Set13_512, 3) BSD20
+# Available test dataset : 1) Set13_256, 2) Set13_512, 3) BSD20
 test_data = 'BSD20'
 
 # if not a blind case

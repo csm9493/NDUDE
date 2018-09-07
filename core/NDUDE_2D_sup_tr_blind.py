@@ -18,8 +18,6 @@ import tensorflow as tf
 import random
 from sklearn.feature_extraction import image
 
-# from .fcaide_sup_get_results import Get_results
-
 class Train_NDUDE_2D:
     
     def __init__(self, case = None, mini_batch_size=256, k = 3, ep=50):

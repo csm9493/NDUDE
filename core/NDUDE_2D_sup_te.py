@@ -15,8 +15,6 @@ import h5py
 import numpy as np
 import random
 
-# from .fcaide_sup_get_results import Get_results
-
 class Test_NDUDE_2D_sup:
     
     def __init__(self, case = None, delta=0.05, model_delta = None, k = 3, test_data = 'BSD20', ep = 15, is_blind = False):

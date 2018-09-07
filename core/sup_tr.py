@@ -17,8 +17,6 @@ import tensorflow as tf
 
 import random
 
-# from .fcaide_sup_get_results import Get_results
-
 class Train_Supervised_2D:
     
     def __init__(self, case = None, delta=0.05, mini_batch_size=256, k = 3, ep=10):

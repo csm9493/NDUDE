@@ -262,6 +262,3 @@ class FT_NDUDE:
             del model
             
         save_results.save_result()
-
-
-#         self.save_result(result_for_save, image_for_save)

@@ -15,8 +15,6 @@ import h5py
 import numpy as np
 import random
 
-# from .fcaide_sup_get_results import Get_results
-
 class Test_Supervised_2D:
     
     def __init__(self, case = None, delta=0.05, model_delta=None, k = 3, test_data = 'BSD20', ep = 15):
