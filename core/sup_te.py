@@ -19,22 +19,20 @@ import random
 
 class Test_Supervised_2D:
     
-    def __init__(self, case = None, delta=0.05, model_delta=None, k = 3, test_data = 'BSD20', ep = 15, is_blind = False):
+    def __init__(self, case = None, delta=0.05, model_delta=None, k = 3, test_data = 'BSD20', ep = 15):
         self.model_output = 3
         self.delta = delta
         
-        if is_blind == False:
-            if test_data == 'BSD20':
-                self.save_file_name = 'Supervised_2D_test_result_BSD20_k'+str(k)+'_delta'+str(int(self.delta*100))
-            elif test_data == 'Set13_256':
-                self.save_file_name = 'Supervised_2D_test_result_Set13_256_k'+str(k)+'_delta'+str(int(self.delta*100))
-            else:
-                self.save_file_name = 'Supervised_2D_test_result_Set13_512_k'+str(k)+'_delta'+str(int(self.delta*100))
+        if test_data == 'BSD20':
+            self.save_file_name = 'Supervised_2D_test_result_BSD20_k'+str(k)+'_delta'+str(int(self.delta*100))
+        elif test_data == 'Set13_256':
+            self.save_file_name = 'Supervised_2D_test_result_Set13_256_k'+str(k)+'_delta'+str(int(self.delta*100))
+        else:
+            self.save_file_name = 'Supervised_2D_test_result_Set13_512_k'+str(k)+'_delta'+str(int(self.delta*100))
             
         self.k = k
         self.test_data = test_data
         self.ep = ep
-        self.is_blind = is_blind
         self.nb_classes = 2
         
         if test_data == 'BSD20':
@@ -81,16 +79,15 @@ class Test_Supervised_2D:
     
     def make_model(self, ep):
         
-        if self.is_blind == False:
             
-            if self.model_delta == None:
-                model_delta = self.delta
-            else:
-                # mismatched case
-                model_delta = self.model_delta
-                
-            model_file_name = 'Supervised_2D_training_data_k'+str(self.k)+'_delta'+str(int(model_delta*100))+'_ep'+str(ep).zfill(2)+'.hdf5'
-            print (model_file_name)
+        if self.model_delta == None:
+            model_delta = self.delta
+        else:
+            # mismatched case
+            model_delta = self.model_delta
+
+        model_file_name = 'Supervised_2D_training_data_k'+str(self.k)+'_delta'+str(int(model_delta*100))+'_ep'+str(ep).zfill(2)+'.hdf5'
+        print (model_file_name)
             
         model = load_model('./models/'+model_file_name)
             

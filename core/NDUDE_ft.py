@@ -19,7 +19,7 @@ from .NDUDE_ft_result import Save_result
 
 class FT_NDUDE:
     
-    def __init__(self, case = None, delta=0.05, model_delta = None, k = 3, test_data = 'BSD20', ep = 10, sup_ep = None, mini_batch_size = 128, is_randinit = True, is_blind = False, is_2DDUDE = True):
+    def __init__(self, case = None, delta=0.05, model_delta = None, k = 3, test_data = 'BSD20', ep = 10, lr=0.001, sup_ep = None, mini_batch_size = 128, is_randinit = True, is_blind = False, is_2DDUDE = True):
         self.model_output = 3
         self.delta = delta
         self.is_randinit = is_randinit
@@ -50,6 +50,7 @@ class FT_NDUDE:
         self.is_2DDUDE = is_2DDUDE
         self.is_randinit = is_randinit
         self.sup_ep = sup_ep
+        self.learning_rate = lr
         
         if test_data == 'BSD20':
             self.num_te_data = 20
@@ -115,7 +116,7 @@ class FT_NDUDE:
 
                 model = load_model('./models/'+model_file_name)
 
-                K.set_value(model.optimizer.lr, 0.001)
+                K.set_value(model.optimizer.lr, self.learning_rate)
                 print('learning rate : ' + str(K.get_value(model.optimizer.lr)))
 
             else:
@@ -138,7 +139,7 @@ class FT_NDUDE:
 
                 model = Model(inputs=[input_layer], outputs=[output_layer])
 
-                adam=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+                adam=Adam(lr=self.learning_rate, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
 
                 model.compile(loss='poisson', optimizer=adam)
                 
